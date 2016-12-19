@@ -1,6 +1,5 @@
 'use strict'
 
-const fs = require('fs')
 const PNG = require('pngjs2').PNG
 
 const START_UP = rgb(7, 84, 19)
@@ -9,7 +8,7 @@ const STOP = rgb(51, 69, 169)
 const TURN_RIGHT = rgb(182, 149, 72)
 const TURN_LEFT = rgb(123, 131, 154)
 
-fs.createReadStream('image.png')
+process.stdin
   .pipe(new PNG())
   .on('parsed', function() {
     for (let y = 0; y < this.height; y++) {
@@ -17,8 +16,7 @@ fs.createReadStream('image.png')
           drawPath(x, y, this.width, this.height, this.data)
         }
     }
-    console.log("Writing output file at 'message.png'")
-    this.pack().pipe(fs.createWriteStream('message.png'))
+    this.pack().pipe(process.stdout)
   })
 
 function drawPath(x, y, width, height, data) {
