@@ -1,6 +1,6 @@
 'use strict'
 
-const PNG = require('pngjs2').PNG
+const PNG = require('pngjs').PNG
 
 const START_UP = rgb(7, 84, 19)
 const START_LEFT = rgb(139, 57, 137)
